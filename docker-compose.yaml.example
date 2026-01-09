@@ -1,0 +1,44 @@
+version: '3'
+services:
+  pt-monitor:
+    container_name: pt-monitor
+    image: yuwancumian2009/pt-monitor:latest
+    network_mode: bridge
+    ports:
+      - "8505:8501"
+    environment:
+      - TZ=Asia/Shanghai  # 设置时区
+      # --- QB 配置 ---
+      - QB_HOST=192.168.x.x
+      - QB_PORT=
+      - QB_USER=
+      - QB_PASS=
+      # --- TR 配置 ---
+      - TR_HOST=192.168.x.x
+      - TR_PORT=
+      - TR_USER=
+      - TR_PASS=
+      # --- emby配置 ---
+      - EMBY_HOST=http://192.168.x.x:xxxx
+      - EMBY_KEY=
+      # --- audiobookshelf配置 ---
+      - ABS_HOST=http://192.168.x.x:xxxx
+      - ABS_KEY=
+      # --- MoviePilot配置 ---
+      - MP_HOST=http://192.168.x.x:xxxx
+      - MP_USER=
+      - MP_PASS=
+      # --- navidrome配置 ---
+      - NAVI_HOST=http://192.168.x.x:xxxx
+      - NAVI_USER=
+      - NAVI_PASS=
+      # --- homeassistant配置 ---
+      - HASS_HOST=http://192.168.x.x:xxxx
+      - HASS_TOKEN=
+      - HASS_ID_TODAY_DL=sensor.openwrt_today_download
+      - HASS_ID_TODAY_UL=sensor.openwrt_today_upload
+      - HASS_ID_MONTH_DL=sensor.openwrt_router_data_received
+      - HASS_ID_MONTH_UL=sensor.openwrt_router_data_sent
+    volumes:
+      - ./:/app
+    restart: always
