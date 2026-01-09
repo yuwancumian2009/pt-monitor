@@ -1,0 +1,4 @@
+flask
+qbittorrent-api
+transmission-rpc
+requests
